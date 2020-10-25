@@ -55,22 +55,27 @@ public class Problem2Test {
     @Test
     public void testRemoveAll() {
         int[][] inputs = {
+                //added duplicates not at front
+                {1, 2, 2, 4, 5},
                 {1, 2, 3},
                 {1, 2, 4, 2},
                 {1, 1, 4, 2},
                 {3, 3, 3, 3},
                 {1, 1, 4, 2},
+
         };
-        int[] targets = {3, 2, 1, 3, 5};
+        int[] targets = {2, 3, 2, 1, 3, 5};
         int[][] expects = {
+                {1, 4, 5},
                 {1, 2},
                 {1, 4},
                 {4, 2},
                 {},
                 {1, 1, 4, 2},
+
         };
-        int[] expectedSize = {2, 2, 2, 0, 4};
-        int[] expectedCounts = {1, 2, 2, 4, 0};
+        int[] expectedSize = {3, 2, 2, 2, 0, 4};
+        int[] expectedCounts = {2, 1, 2, 2, 4, 0};
 
         // empty list
         SingleLinkedList emptyList = new SingleLinkedList();
