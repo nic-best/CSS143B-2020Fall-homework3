@@ -11,17 +11,14 @@ public class Problem3 {
 
         LinkedListStack<Integer> stack = new LinkedListStack<Integer>();
         ListNode current = list.next;
+        //push each value onto our stack as we traverse the linked list
         while(current!=null){
-            System.out.println("hi");
-            System.out.println("current.val = " + current.val);
             stack.push(current.val);
             current=current.next;
         }
-
-        for (int i = 0; i < stack.size(); i++) {
-            int val = stack.pop();
-            System.out.println("val = " + val);
-            print.print(val + " ");
+        //pop and print each value from the linked list
+        while(stack.peek()!=null){
+            print.println(stack.pop());
         }
     }
 }
