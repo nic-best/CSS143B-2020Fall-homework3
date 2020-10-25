@@ -1,5 +1,7 @@
 package Problem1;
 
+import java.util.Arrays;
+
 public class ArrayStack<T> implements Stack<T> {
     // do not change member variables
     private T[] data;
@@ -9,27 +11,51 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     public ArrayStack(int capacity) {
-        // homework
+        //generic array creation
+        data = (T[]) new Object[capacity];
+        size = 0;
     }
 
     @Override
     public boolean push(T val) {
-        // homework
-        return false;   // place holder
+        if(size==data.length){
+            return false;
+        }
+        if(data.length==0){
+            return false;
+        }
+        System.out.println("valPush = " + val);
+        data[size] = val;
+        size++;
+        return true;
     }
 
     @Override
     public T pop() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if(size==0){
+            return null;
+        }
+        if(data.length==0){
+            return null;
+        }
+        T val = data[size-1];
+        data[size-1] = null;
+        size--;
+        return val;
     }
 
     @Override
     public T peek() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if(data.length==0){
+            return null;
+        }
+        if(size==0){
+            return null;
+        }
+        T val = data[size-1];
+        System.out.println("valPeek = " + val);
+        System.out.println(Arrays.toString(data));
+        return val;
     }
 
     @Override
