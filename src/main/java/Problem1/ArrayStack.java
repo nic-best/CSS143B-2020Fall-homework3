@@ -24,7 +24,6 @@ public class ArrayStack<T> implements Stack<T> {
         if(data.length==0){
             return false;
         }
-        System.out.println("valPush = " + val);
         data[size] = val;
         size++;
         return true;
@@ -38,7 +37,9 @@ public class ArrayStack<T> implements Stack<T> {
         if(data.length==0){
             return null;
         }
+        //indexes start at 0
         T val = data[size-1];
+        //purge out old value
         data[size-1] = null;
         size--;
         return val;
@@ -52,9 +53,8 @@ public class ArrayStack<T> implements Stack<T> {
         if(size==0){
             return null;
         }
+        //indexes start at0
         T val = data[size-1];
-        System.out.println("valPeek = " + val);
-        System.out.println(Arrays.toString(data));
         return val;
     }
 

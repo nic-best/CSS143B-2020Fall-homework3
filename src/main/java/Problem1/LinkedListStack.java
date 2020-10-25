@@ -25,15 +25,14 @@ public class LinkedListStack<T> implements Stack<T> {
             return null;
         }
 
-        T val = data.removeFirst();   // place holder
-        return val;   // place holder
+        T val = data.removeFirst();
+        return val;
     }
 
     @Override
     public T peek() {
-        // homework
-        T val = data.peekFirst();   // place holder
-        return val;   // place holder
+        T val = data.peekFirst();
+        return val;
     }
 
     @Override

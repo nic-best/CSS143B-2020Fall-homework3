@@ -58,6 +58,7 @@ public class ValidParentheses {
             return true;
         }
         String s = stack.pop();
+        //if we have a closing character, check for any open characters
         if(s.equals(close)){
             return recur(stack, close, 1);
         }
@@ -65,26 +66,29 @@ public class ValidParentheses {
         else
             return false;
     }
-    private static boolean recur(LinkedListStack<String> stack, String close, int numOpen){
+    private static boolean recur(LinkedListStack<String> stack, String close, int numClose){
         //if we just saw an open but nothing is left on the stack, its invalid
         if(stack.size()==0){
             return false;
         }
         String s = stack.pop();
+        //if we have a closing character, check for any open characters
         if(s.equals(close)){
-            return recur(stack, close, numOpen+1);
+            return recur(stack, close, numClose+1);
         }
-
+        //if its an open character, check if we have more close characters than open
         else{
-            numOpen = numOpen-1;
-            if(stack.size()==0 && numOpen ==0){
+            numClose = numClose-1;
+            //if we have no more characters to check and no remaining close characters this is valid
+            if(stack.size()==0 && numClose ==0){
                 return true;
             }
-            else if(numOpen<0){
+            //if we have more close characters, this is invalid
+            else if(numClose<0){
                 return false;
             }
             else{
-                return recur(stack, close, numOpen);
+                return recur(stack, close, numClose);
             }
         }
     }

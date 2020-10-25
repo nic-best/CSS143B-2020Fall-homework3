@@ -25,18 +25,17 @@ public class MinStack extends ArrayStack<Integer> {
         //only sets lowest val in this object if we can push another val and if the val is less than lowest
         boolean canPush = super.push(val);
         if(canPush){
+            //if we already have a lowest val, push the new lowest val
             if(lowestVals.peek()!=null){
                 if(lowestVals.peek()<val){
-                    System.out.println("alreadylowest");
                     lowestVals.push(lowestVals.peek());
                 }
                 else{
-                    System.out.println("newlowest");
                     lowestVals.push(val);
                 }
             }
+            //if not, push the val we are pushing now
             else{
-                System.out.println("first lowest");
                 lowestVals.push(val);
             }
         }
@@ -47,6 +46,7 @@ public class MinStack extends ArrayStack<Integer> {
     //o(n) complexity, need to find new lowest val
     public Integer pop() {
         Integer val = super.pop();
+        //if we cant push anything, dont try to pop off lowestVal stack
         if(val==null){
             return val;
         }
@@ -55,7 +55,6 @@ public class MinStack extends ArrayStack<Integer> {
     }
 
     public Integer getMin() {
-        System.out.println(lowestVals.peek());
         return lowestVals.peek();
     }
 }
